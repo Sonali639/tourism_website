@@ -9,6 +9,7 @@ import team2Image from '../Assets/ImagesAbout/team2.jpg';
 import team3Image from '../Assets/ImagesAbout/team3.jpg';
 import team4Image from '../Assets/ImagesAbout/team4.jpg';
 import bgImage from '../Assets/ImagesAbout/question-mark-bg-final.png';
+import Footer from "./Footer";
 // import Images from '../Assets/Images/question-mark-bg-final.png';
 
 const images = [
@@ -387,6 +388,7 @@ export default function About() {
 
         </div>
             </section >
+            <Footer/>
 
         </>
     );

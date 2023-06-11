@@ -1,5 +1,6 @@
 import React from 'react'
 import Header from "./Header";
+import Footer from "./Footer";
 import team1Image from '../Assets/ImagesAbout/team1.jpg'
 import jaipur1 from '../Assets/gallery/jaipur1.jpg'
 import jaipur2 from '../Assets/gallery/jaipur2.jpg'
@@ -431,7 +432,7 @@ let imgs=[
     </div>
 </section> */}
 
-
+<Footer/>
 
      </>
     )

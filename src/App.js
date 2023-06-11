@@ -16,6 +16,7 @@ import Login from'./Components/Login';
 import Signup from'./Components/signup';
 import TourismStats from'./Components/TourismStats';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import TourReservationForm from './Components/TourReservationForm';
 function App() {
   return (
     <>
@@ -37,10 +38,9 @@ function App() {
       <Route path='/Login' element={<Login/>}/>
       <Route path='/Signup' element={<Signup/>}/>
       <Route path='/TourismStats' element={<TourismStats/>}/>
-
+      <Route path='/TourReservationForm' element={<TourReservationForm/>}/>
       
     </Routes>
-    <Footer/>
     </BrowserRouter>
 
     </>

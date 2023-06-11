@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import testi from "../Assets/ImagesTourList/04.png";
 import "./VideoOverlay.css";
+import Footer from "./Footer";
 {
   /*import Typewriter from 'typewriter-effect/dist/core';
 new Typewriter('#typewriter', {
@@ -572,7 +573,10 @@ function Home() {
           <div className="gradient-overlay"></div>
         </div>
       </section>
+      <Footer/>
     </div>
+
+    
   );
 }
 export default Home;

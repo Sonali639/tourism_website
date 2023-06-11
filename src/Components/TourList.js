@@ -7,6 +7,7 @@ import franceImage from '../Assets/ImagesTourList/france1.jpeg';
 import greeceImage from '../Assets/ImagesTourList/greece1.jpeg';
 import dubaiImage from '../Assets/ImagesTourList/dubai1.jpg';
 import SingleCardDetail from "./SingleCard";
+import Footer from "./Footer";
 
 function Gallery() {
   let imgs = [
@@ -124,7 +125,7 @@ function Gallery() {
         </div>
       </section>
 
-
+<Footer/>
     </>
   );
 }
