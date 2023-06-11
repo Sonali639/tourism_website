@@ -1,0 +1,121 @@
+import React from "react";
+import Header from "./Header";
+import SingleCardDetail from "./SingleCard";
+
+function HolyPlace() {
+  
+  return (
+    <>
+
+      <section className="bg-img-TourList">
+        <Header />
+        <div className="py-5 px-5">
+          <div className="container-fluid py-5">
+            <div className=" pt-md-5 ">
+              <div class="mainSubtitle2 text-white">
+                Choose Your Destinations
+              </div>
+              <div className=" text-white pt-2">
+                {" "}
+                <h5 class="mainHeading2">
+                  {" "}
+                  <span>popular</span> HolyPlaces
+                </h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+      <section className="destination1" style={{ padding: "5rem" }}>
+        <div className="container d-flex fa-align-center justify-content-center">
+          <div className="row">
+
+            <div className="col-md-4 col-sm-12 p-3 mt-2">
+              <a href="">
+                {/* <div className="card wh-93">
+                  <img src={maldivesImage} alt="" />
+                  <div className="card-img-overlay " style={{ top: "90%" }}>
+                    <h4 className="font-weight-bold ">
+                      <a className="text-white border-bottom  " href="#">
+                        <i className="fa fa-map-marker icon-white"></i> Maldives
+                      </a>
+                    </h4>
+                  </div>
+                </div> */}
+                <SingleCardDetail/>
+              </a>
+            </div>
+
+            <div className="col-md-4 col-sm-12 p-3 mt-2">
+              <a href="">
+                {/* <div className="card wh-93">
+                  <img src={canadaImage} alt="" />
+                  <div className="card-img-overlay" style={{ top: "90%" }}>
+                    <h4 className="font-weight-bold">
+                      <a className="text-white border-bottom" href="#">
+                        <i className="fa fa-map-marker icon-white"></i> Canada
+                      </a>
+                    </h4>
+                  </div>
+                </div> */}
+<SingleCardDetail/>
+
+              </a>
+            </div>
+
+
+            <div className="col-md-4 col-sm-12 p-3 mt-2">
+              <a href="">
+            <SingleCardDetail/>
+              </a>
+            </div>
+
+
+            <div className="col-md-4 col-sm-12 p-3 mt-2">
+              <a href="">
+                {/* <div className="card wh-93">
+                  <img src={franceImage} alt="" />
+                  <div className="card-img-overlay" style={{ top: "90%" }}>
+                    <h4 className="font-weight-bold">
+                      <a className="text-white border-bottom" href="#">
+                        <i className="fa fa-map-marker icon-white"></i> France
+                      </a>
+                    </h4>
+                  </div>
+                </div> */}
+                <SingleCardDetail />
+              </a>
+            </div>
+
+
+            <div className="col-md-4 col-sm-12 p-3 mt-2">
+              <a href="">
+               <SingleCardDetail/>
+              </a>
+            </div>
+
+
+            <div className="col-md-4 col-sm-12 p-3 mt-2">
+              <a href="">
+                <SingleCardDetail/>
+              </a>
+            </div>
+
+
+
+
+            {/* Repeat the same pattern for other destinations */}
+            {/* Italy, France, Greece, Dubai */}
+          </div>
+        </div>
+      </section>
+
+
+    </>
+  );
+}
+
+export default HolyPlace;

@@ -1,0 +1,57 @@
+.country-box {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    z-index: 3;
+    transform: rotate(270deg);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    font-family: 'Barlow', sans-serif;
+    padding: 6px 12px;
+    line-height: 1.5em;
+    text-transform: uppercase;
+    box-shadow: 0px 0px 35px 0px rgb(0 0 0 / 5%);
+    background: rgb(20, 55, 35);
+}
+.testimonial-box{
+    position: relative;
+    background: #f4f4ee;
+    padding: 60px 45px 45px;
+    margin-bottom: -70px;
+}
+.testimonial-box .head-box h6{
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: #2095ae;
+    text-transform: uppercase;
+    position: relative;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+}
+.testimonial-box .head-box h4 {
+    font-weight: 700;
+    font-size: 30px;
+    color: #0f2454;
+    border-bottom: 1px solid #f4f5f8;
+    padding-bottom: 15px;
+    text-transform: uppercase;
+}
+
+
+img.cover{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    overflow: hidden;
+    
+}
+
+.destination1{
+    padding: 120px 0;
+}
+.wh-93{
+    width: 93%;
+    height: 93%;
+}
