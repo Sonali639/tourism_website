@@ -543,3 +543,32 @@ border-radius: 0%;
     border: 1px solid #f2756a ;
     border-radius: 0%;
  }
+
+ 
+.btn-white{
+    background-color: white;
+    color: rgb(20,55,35);
+    border: 1px solid  rgb(255, 255, 255);
+    border-radius: 0%;
+ }
+ .btn-white:hover{
+    background-color: rgb(20,55,35);
+    color: rgb(255, 255, 255);
+    border: 1px solid  rgb(20,55,35);
+    border-radius: 0%;
+ }
+
+ .round-btn{
+    border: 1px solid  rgb(181, 181, 181);
+    border-radius: 50px;
+    background-color: transparent;
+    color: black;
+    font-size: 18px;
+ }
+ .round-btn:hover{
+    border: 1px solid  rgb(255, 255, 255);
+    border-radius: 50px;
+    background-color: rgb(20,55,35);
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+ }

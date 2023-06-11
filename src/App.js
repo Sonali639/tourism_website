@@ -13,6 +13,8 @@ import Error from'./Components/Error';
 import TourDetails from'./Components/TourDetails';
 import HolyPlace from'./Components/HolyPlaces';
 import Login from'./Components/Login';
+import Signup from'./Components/signup';
+import TourismStats from'./Components/TourismStats';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 function App() {
   return (
@@ -33,6 +35,8 @@ function App() {
       <Route path='TourDetails' element={<TourDetails/>}/>
       <Route path='/HolyPlace' element={<HolyPlace/>}/>
       <Route path='/Login' element={<Login/>}/>
+      <Route path='/Signup' element={<Signup/>}/>
+      <Route path='/TourismStats' element={<TourismStats/>}/>
 
       
     </Routes>

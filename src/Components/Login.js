@@ -10,7 +10,7 @@ function Login() {
   <Header />
   <div style={{ backgroundImage: 'url(https://wnderland.qodeinteractive.com/wp-content/uploads/2019/10/h5-bckg-img-02.jpg?id=1249)' }}>
     <div className="row">
-      <div className="col-md-7">
+      <div className="col-md-4">
         <div className="pt-5">
           <img src="images/login-img-flight-path.png" alt="" width="100%" />
         </div>
@@ -19,7 +19,7 @@ function Login() {
       <div className="col-md-5">
         <section className="login py-5 px-4">
           <div style={{ backgroundColor: 'white' }} className="px-5 mt-2 pb-5">
-            <div className="font-33px pt-4 pb-1">Login</div>
+            <div className="font-33px pt-5 pb-1">Login</div>
 
             <div className="pt-4">
               <form action="">
@@ -39,7 +39,7 @@ function Login() {
                   <button type="submit" className="btn font-10px text-white btn-dark px-5 btn-block border-input py-3">LOGIN</button>
                 </div>
 
-                <div className="text-center pt-2">Don't have an Account ? <a href=""><b className="text-peach">Signup</b></a></div>
+                <div className="text-center pt-2">Don't have an Account ? <a href="/signup"><b className="text-peach">Signup</b></a></div>
               </form>
             </div>
           </div>

@@ -1,89 +1,114 @@
 import React from "react";
 import Header from "./Header";
 import "./style.css";
-import Slider from 'react-slick';
+import Slider from "react-slick";
 import Travel from "../Assets/Videos/travelvideo.mp4";
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import testi from '../Assets/ImagesTourList/04.png';
-import './VideoOverlay.css';
-{/*import Typewriter from 'typewriter-effect/dist/core';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import testi from "../Assets/ImagesTourList/04.png";
+import "./VideoOverlay.css";
+{
+  /*import Typewriter from 'typewriter-effect/dist/core';
 new Typewriter('#typewriter', {
   strings: ['Live, Travel, Explore','Travel, dream, repeat.', 'Wander, Dream, Discover.'],
   autoStart: true,
-});*/}
+});*/
+}
 // import Videos from '../Assets/Videos/travelvideo.mp4'
 
 function Home() {
-
-  
-  
   const sliderSettings = {
     dots: true,
     infinite: true,
-    speed: 900,
+    speed: 1800,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 6000,
     arrows: false,
   };
 
   // const videoSrc = "../Assets/Videos/travelvideo.mp4";
 
-
   return (
-
-  
     <div>
-  {/* <BackToTopButton/> */}
+      {/* <BackToTopButton/> */}
 
-
-    <div className="bg-img-home">
-      <Header />
-      <Slider {...sliderSettings} >
-        <div className="py-5 my-5">
-          <div className="py-5 px-5">
-            <div className="container-fluid py-5">
-              <div className="row pt-md-5">
-                <div className="font-50px text-white">Home</div>
+      <div className="bg-img-home">
+        <Header />
+        <Slider {...sliderSettings}>
+          <div className="py-5 my-5">
+            <div className="py-5 px-5">
+              <div className="container-fluid py-5">
+                <div className=" pt-md-">
+                  <div className=" text-white mainHeading2"><span>Explore The World</span> with Us</div>
+                  <div className="text-white "  style={{fontSize:'20px'}}>Unleash your wanderlust with our tourism website. Discover stunning destinations, immerse in diverse cultures, and create unforgettable memories. Explore curated tours, indulge in local experiences, and let your travel dreams come true. Start your adventure today!</div>
+                  <div className="travel-list-btn  pt-4">
+                 <a href="./tourList"><button
+                    type="button"
+                    class="btn btn-outline-success btn-white py-3 px-5 " >
+                    Explore Tours
+                  </button>
+                  </a>
+                </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        {/* Add more slider items as needed */}
-        <div className="py-5 my-5">
-        <div className="py-5 px-5">
-            <div className="container-fluid py-5">
-              <div className="row pt-md-5">
-                <div className="font-50px text-white">Home title 2</div>
+          {/* Add more slider items as needed */}
+          <div className="py-5 my-5">
+            <div className="py-5 px-5">
+              <div className="container-fluid py-5">
+                <div className="pt-md-5">
+                  <div className="font-50px text-white">Home title 2</div>
+                  <div className="travel-list-btn pt-4">
+                 <a href="./tourList"><button
+                    type="button"
+                    class="btn btn-outline-success btn-white py-3 px-5 " >
+                    Explore HolyPlaces
+                  </button>
+                  </a>
+                </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className="py-5 my-5">
-        <div className="py-5 px-5">
-            <div className="container-fluid py-5">
-              <div className="row pt-md-5">
-                <div className="font-50px text-white">Home title 3</div>
+          <div className="py-5 my-5">
+            <div className="py-5 px-5">
+              <div className="container-fluid py-5">
+              <div className="pt-md-5">
+                  <div className="font-50px text-white">Home title 3</div>
+                  <div className="travel-list-btn pt-4">
+                 <a href="./tourList"><button
+                    type="button"
+                    class="btn btn-outline-success btn-white py-3 px-5 " >
+                    Explore HolyPlaces
+                  </button>
+                  </a>
+                </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className="py-5 my-5">
-        <div className="py-5 px-5">
-            <div className="container-fluid py-5">
-              <div className="row pt-md-5">
-                <div className="font-50px text-white text-center">Home title 4</div>
+          <div className="py-5 my-5">
+            <div className="py-5 px-5">
+              <div className="container-fluid py-5">
+              <div className="pt-md-5">
+                  <div className="font-50px text-white">Home title 4</div>
+                  <div className="travel-list-btn pt-4">
+                 <a href="./tourList"><button
+                    type="button"
+                    class="btn btn-outline-success btn-white py-3 px-5 " >
+                    Explore HolyPlaces
+                  </button>
+                  </a>
+                </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </Slider>
-    </div>
-
-
-
+        </Slider>
+      </div>
 
       <section
         className="py-5"
@@ -95,7 +120,11 @@ function Home() {
         <div className="container">
           <div className="row px-5 d-flex align-items-center pt-5">
             <div className="col-md-6 col-sm-12">
-              <img src="https://images.unsplash.com/photo-1634149537214-dde37e11dd80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" alt="" width="90%" />
+              <img
+                src="https://images.unsplash.com/photo-1634149537214-dde37e11dd80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80"
+                alt=""
+                width="90%"
+              />
             </div>
             <div className="col-md-6 col-sm-12">
               <div className="font-33px pt-5">
@@ -288,11 +317,23 @@ function Home() {
                 molestias impedit eius ea cupiditate fugit rerum eaque ad
                 dolores veniam.
               </div>
-              <img
-                className="pt-5 pl-4"
-                src="https://backpacktraveler.qodeinteractive.com/wp-content/uploads/2018/10/landing-plane-img.png"
-                alt=""
-              />
+              <div className="row">
+                <div className="travel-list-btn col pt-4">
+                 <a href="./tourList"><button
+                    type="button"
+                    class="btn btn-outline-success btn-darkgreen py-3 px-5 " >
+                    Explore Tours
+                  </button>
+                  </a>
+                </div>
+                <div className="col">
+                  <img
+                    className="pt-4 pl-4"
+                    src="https://backpacktraveler.qodeinteractive.com/wp-content/uploads/2018/10/landing-plane-img.png"
+                    alt=""
+                  />
+                </div>
+              </div>
             </div>
             <div className="col-md-6 text-center">
               <img
@@ -384,74 +425,117 @@ function Home() {
         </div>
       </section> */}
 
+      <section className="pb-5 container">
+        <div
+          className="d-flex align-items-center text-black py-5"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(0,0,0,0),rgba(0, 0, 0, 0)), url(https://wanderland.qodeinteractive.com/wp-content/uploads/2019/11/landing-img-42a.png)",
+          }}
+        >
+          <div className="container">
+            <div className="row pt-4">
+              <div className="col-md-6 mt-30 pt-5">
+                <p>
+                  <i className="fa fa-star icon-white" aria-hidden="true"></i>
+                  <i className="fa fa-star icon-white" aria-hidden="true"></i>
+                  <i className="fa fa-star icon-white" aria-hidden="true"></i>
+                  <i className="fa fa-star icon-white" aria-hidden="true"></i>
+                  <i className="fa fa-star icon-white" aria-hidden="true"></i>
+                </p>
+                <h5 className="font-18px">
+                  We Provide Top Destinations Expecially For You Book Now and
+                  Enjoy! <br /> Lorem ipsum dolor sit amet consectetur
+                  adipisicing elit. Accusamus, similique! Animi, ipsum. Lorem
+                  ipsum, dolor sit amet consectetur adipisicing elit. Quos{" "}
+                  <br /> <br /> perferendis laborum necessitatibu s incidunt
+                  facilis. Voluptatem cupiditate repellendus eos ad quis.{" "}
+                </h5>
 
-      
-    <section className="pb-5 container">
-      <div className="d-flex align-items-center text-black py-5"
-        style={{ backgroundImage: 'linear-gradient(rgba(0,0,0,0),rgba(0, 0, 0, 0)), url(https://wanderland.qodeinteractive.com/wp-content/uploads/2019/11/landing-img-42a.png)' }}>
-        <div className="container">
-          <div className="row pt-4">
-            <div className="col-md-6 mt-30 pt-5">
-              <p>
-                <i className="fa fa-star icon-white" aria-hidden="true"></i>
-                <i className="fa fa-star icon-white" aria-hidden="true"></i>
-                <i className="fa fa-star icon-white" aria-hidden="true"></i>
-                <i className="fa fa-star icon-white" aria-hidden="true"></i>
-                <i className="fa fa-star icon-white" aria-hidden="true"></i>
-              </p>
-              <h5 className="font-18px">We Provide Top Destinations Expecially For You Book Now and Enjoy! <br /> Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, similique! Animi, ipsum. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos <br /> <br /> perferendis laborum necessitatibu s incidunt facilis. Voluptatem cupiditate repellendus eos ad quis. </h5>
-              
-             {/*}   <div className=" ">
+                {/*}   <div className=" ">
                   <p>    <h5 className="font-18px"><i className="fa fa-phone fa-3x" style={{fontSize:'28px' , color:'black'}} aria-hidden="true"></i>        Call Now</h5>
 </p>
     </div> */}
-                
-                <div className="pt-"> 
 
-                <a href="tel:855-333-4444">
-                    <h5 className="text-black " style={{  color: 'rgb(58, 89, 71)' , fontWeight:'600' }}><i className="fa fa-phone fa-3x pr-2" style={{fontSize:'28px' , color:'black'}} aria-hidden="true"></i>     855 333 4444</h5>
-                  </a>   
+                <div className="pt-">
+                  <a href="tel:855-333-4444">
+                    <h5
+                      className="text-black "
+                      style={{ color: "rgb(58, 89, 71)", fontWeight: "600" }}
+                    >
+                      <i
+                        className="fa fa-phone fa-3x pr-2"
+                        style={{ fontSize: "28px", color: "black" }}
+                        aria-hidden="true"
+                      ></i>{" "}
+                      855 333 4444
+                    </h5>
+                  </a>
                 </div>
-              
-           {/*}   <p>
+
+                {/*}   <p>
                 <i className="fa fa-check icon-white pr-2" aria-hidden="true"></i>
                 <small>Call us, it's toll-free.</small>
   </p> */}
-            </div>
-            <div className="col-md-6">
-              <div className="testimonial-box">
-                <div className="head-box">
-                  <h6>Testimonials</h6>
-                  <h4>Travelers Reviews</h4>
-                </div>
-                <div className="autoplay">
-                  <div className="px-1">
-                    <div className="feedback text-center"></div>
-                    <div className="paragraph2">
-                      <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus exercitationem, qui magni
-                        impedit id natus sequi iste voluptates beatae, dolorum perspiciatis rerum odit quibusdam
-                        asperiores consequuntur facilis neque, laborum deleniti.
-                      </p>
-                    </div>
-                    <div className="row pt-2">
-                      <div className="col-md-4 pl-4 mt">
-                        <img className="w-75 h-75" src={testi} alt="" />
+              </div>
+              <div className="col-md-6">
+                <div className="testimonial-box">
+                  <div className="head-box">
+                    <h6>Testimonials</h6>
+                    <h4>Travelers Reviews</h4>
+                  </div>
+                  <div className="autoplay">
+                    <div className="px-1">
+                      <div className="feedback text-center"></div>
+                      <div className="paragraph2">
+                        <p>
+                          Lorem ipsum dolor sit amet consectetur adipisicing
+                          elit. Repellendus exercitationem, qui magni impedit id
+                          natus sequi iste voluptates beatae, dolorum
+                          perspiciatis rerum odit quibusdam asperiores
+                          consequuntur facilis neque, laborum deleniti.
+                        </p>
                       </div>
-                      <div className="col-md-4">
-                        <div className="pt-">
-                          <i className="fa fa-star text-warning" aria-hidden="true"></i>
-                          <i className="fa fa-star text-warning" aria-hidden="true"></i>
-                          <i className="fa fa-star text-warning" aria-hidden="true"></i>
-                          <i className="fa fa-star text-warning" aria-hidden="true"></i>
-                          <i className="fa fa-star text-warning" aria-hidden="true"></i>
+                      <div className="row pt-2">
+                        <div className="col-md-4 pl-4 mt">
+                          <img className="w-75 h-75" src={testi} alt="" />
                         </div>
-                        <h6 className="text-dark mb-0" style={{ fontSize: '1rem' }}>
-                          Nolan White
-                        </h6>
-                        <span className="text-dark" style={{ fontSize: '0.875rem' }}>
-                          Guest review
-                        </span>
+                        <div className="col-md-4">
+                          <div className="pt-">
+                            <i
+                              className="fa fa-star text-warning"
+                              aria-hidden="true"
+                            ></i>
+                            <i
+                              className="fa fa-star text-warning"
+                              aria-hidden="true"
+                            ></i>
+                            <i
+                              className="fa fa-star text-warning"
+                              aria-hidden="true"
+                            ></i>
+                            <i
+                              className="fa fa-star text-warning"
+                              aria-hidden="true"
+                            ></i>
+                            <i
+                              className="fa fa-star text-warning"
+                              aria-hidden="true"
+                            ></i>
+                          </div>
+                          <h6
+                            className="text-dark mb-0"
+                            style={{ fontSize: "1rem" }}
+                          >
+                            Nolan White
+                          </h6>
+                          <span
+                            className="text-dark"
+                            style={{ fontSize: "0.875rem" }}
+                          >
+                            Guest review
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -460,30 +544,34 @@ function Home() {
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-{/*video*/}
-    {/* <section className="pt-5">
+      {/*video*/}
+      {/* <section className="pt-5">
     <div className="video-container " >
  <video style={{height:'500px',objectFit:'cover', width:'100%'}} autoPlay muted loop>
   <source src={Travel} type="video/mp4" width="100%"/>
   </video>    
     </div>
     </section> */}
-  <section className="pt-5">
-      <div className="video-container">
-        <video style={{ height: '500px', objectFit: 'cover', width: '100%' }} autoPlay muted loop>
-          <source src={Travel} type="video/mp4" width="100%" />
-        </video>
-        <div className="text-overlay">
-          <h1 className="overlay-text " id="typewriter">Lorem ipsum dolor sit.</h1>
-  </div>
-        <div className="gradient-overlay"></div>
-  </div>
-    </section>
-
-
+      <section className="pt-5">
+        <div className="video-container">
+          <video
+            style={{ height: "500px", objectFit: "cover", width: "100%" }}
+            autoPlay
+            muted
+            loop
+          >
+            <source src={Travel} type="video/mp4" width="100%" />
+          </video>
+          <div className="text-overlay">
+            <h1 className="overlay-text " id="typewriter">
+              Lorem ipsum dolor sit.
+            </h1>
+          </div>
+          <div className="gradient-overlay"></div>
+        </div>
+      </section>
     </div>
   );
 }
