@@ -45,8 +45,8 @@ function App() {
       <Route path='/Signup' element={<Signup/>}/>
       <Route path='/TourismStats' element={<TourismStats/>}/>
       <Route path='/TourReservationForm/:id' element={<TourReservationForm/>}/>
-      <Route path='/ChatBot' element={<ChatBot/>}/>
-      
+      <Route path='/ChatBot' element={<ChatBot/>}/> 
+      {/* test */}
       
     </Routes>
     </BrowserRouter>
