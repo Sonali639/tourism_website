@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import DatePicker from 'react-date-picker';
 import 'react-date-picker/dist/DatePicker.css';
@@ -67,24 +66,64 @@ const TourReservationForm = () => {
                <input type="date" className="form-control border-input py-3 px-3"
                 placeholder="date" id="birthday" name="birthday"></input>
             </div>
-            {/* <div class="col-md-6 col-sm-12">
-              <div>Total pr</div>
-            </div> */}
-          </div>
-
-          <div class="row pt-3">
             <div class="col-md-6">
               <input type="number" id="quantity"  className="form-control border-input py-3 px-3"
                 placeholder="How Many People are you Booking for?" name="quantity" min="1" max="8"></input>
             </div>
           </div>
 
-          <div class=" py-2 text-right mt-3 col-md-6 " style={{backgroundColor:'rgb(255,255,255)', border:'1px solid rgb(20,55,35)'}}>
+   
+<div className="d-flex float-right">
+          <div class=" py-2 text-right mt-3  px-5 " style={{backgroundColor:'rgb(255,255,255)', border:'1px solid rgb(20,55,35)'}}>
               <div>Total price : $200</div>
             </div>
+            </div>
+
+{/*---paymet--*/}
+<div className="payment pt-5">
+<div className="title-payment" style={{fontWeight:'600', fontSize:'20px'}}>
+  Payment Deatils
+  <div class="row pt-3">
+          <div class="col-md-6 col-sm-12">
+            <input
+                type="text"
+                className="form-control border-input py-3 px-3"
+                placeholder="Name on Card"
+              />
+            </div>
+          </div>
+          <div class="row pt-3">
+          <div class="col-md-6 col-sm-12">
+            <input
+                type="N]number"
+                className="form-control border-input py-3 px-3"
+                placeholder="Enter Card number"
+              />
+            </div>
+          </div>
+          <div class="row pt-3">
+          <div class="col-md-3 col-sm-6">
+            <input
+                type="N]number"
+                className="form-control border-input py-3 px-3"
+                placeholder="Valid through"
+              />
+            </div>
+            <div class="col-md-3 col-sm-6">
+            <input
+                type="N]number"
+                className="form-control border-input py-3 px-3"
+                placeholder="CVV"
+              />
+            </div>
+          
+          </div>
+</div>
+</div>
+
 
           <div className="pt-4 col-md-3 pl-0">
-                  <button type="submit" className="btn font-10px text-white btn-dark px-5 btn-block border-input py-3">Cofirm Booking</button>
+                  <button type="submit" className="btn font-10px text-white btn-dark px-5 btn-block border-input py-3"> Pay Now</button>
         </div>
 
         </form>

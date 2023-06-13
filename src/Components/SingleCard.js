@@ -3,45 +3,49 @@ import demo from '../Assets/ImagesTourList/maldives1.jpeg'
 import './style.css'
 import './Singlecard.css'
 import maldivesImage from '../Assets/ImagesTourList/maldives1.jpeg';
+import { useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
 
 
 function SingleCardDetail() {
-let CardData =[
-  {
-    imageSrc: 'https://z9d7c4u6.rocketcdn.me/wp-content/uploads/2017/02/gallery-masonry-1-1.jpg',
-    country: 'Italy',
-    price: '$1,500 / per person',
-  },
-  {
-    imageSrc: 'https://z9d7c4u6.rocketcdn.me/wp-content/uploads/2017/02/gall-masnry-3-5.jpg',
-    country: 'France',
-    price: '$2,000 / per person',
-  },
-  {
-    imageSrc: 'https://z9d7c4u6.rocketcdn.me/wp-content/uploads/2017/02/gall-masnry-3-4.jpg',
-    country: 'Spain',
-    price: '$1,800 / per person',
-  },
-];
+  const [data, setData] = useState([]);
+  
 
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch('https://backend-production-9ac3.up.railway.app/api/tour/');
+      const jsonData = await response.json();
+      setData(jsonData);
+      
+    } catch (error) {
+      console.log('Error fetching data:', error);
+    }
+  };
+  
     return (
      <>
-      
-      <div className="card">
-                  <img src={maldivesImage} style={{ height: '450px' }} alt="" />
-                  <span className="country-box mt-4">
-                    <a href="#" className="icon-white text-white">Italy</a>
-                  </span>
-                  <div className="square-container d-flex align-items-end justify-content-end">
-                    <div className="box-title icon-white">
-                      <h4 className="font-weight-bold text-white border-bottom "> <i className="fa fa-map-marker icon-white"></i> Rome</h4>
-                      <h6 className="text-white">{CardData.price}/ per person</h6>
-                    </div>
-                  </div>
+        <div className="card-container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '50px' }}>
+        {data.map((item) => (
+          <Link to={`/TourDetails/${item.id}`} key={item.id} className="card-link">
+            <div className="card">
+              <img src={item.image1} style={{ height: '450px' }} alt="" />
+              <span className="country-box mt-4">
+                <a href="#" className="icon-white text-white">{item.location}</a>
+              </span>
+              <div className="square-container d-flex align-items-end justify-content-end">
+                <div className="box-title icon-white">
+                  <h4 className="font-weight-bold text-white border-bottom "> <i className="fa fa-map-marker icon-white"></i> Rome</h4>
+                  <h6 className="text-white">{item.price}/ per person</h6>
                 </div>
-               
-
-
+              </div>
+            </div>
+          </Link>
+        ))}
+        </div>
      </>
     )
 }

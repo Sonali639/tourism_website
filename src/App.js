@@ -17,7 +17,12 @@ import Signup from'./Components/signup';
 import TourismStats from'./Components/TourismStats';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import TourReservationForm from './Components/TourReservationForm';
+
+
+
 function App() {
+
+
   return (
     <>
     
@@ -33,7 +38,7 @@ function App() {
       <Route path="/SingleCard" element={<SingleCardDetail/>}/>
       <Route path="/BackToTopBtn" element={<BackToTopButton/>}/>
       <Route path="/Error" element={<Error/>}/>
-      <Route path='TourDetails' element={<TourDetails/>}/>
+      <Route path='TourDetails/:id' element={<TourDetails/>}  />
       <Route path='/HolyPlace' element={<HolyPlace/>}/>
       <Route path='/Login' element={<Login/>}/>
       <Route path='/Signup' element={<Signup/>}/>
