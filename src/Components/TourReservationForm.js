@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import DatePicker from 'react-date-picker';
 import 'react-date-picker/dist/DatePicker.css';
 
 const TourReservationForm = () => {
+  const { id } = useParams();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -10,19 +12,41 @@ const TourReservationForm = () => {
   const [destination, setDestination] = useState("");
   const [groupSize, setGroupSize] = useState("");
   const [totalPrice, setTotalPrice] = useState(0);
+  const [tourData, setTourData] = useState(null);
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Perform form submission logic here
     console.log("Form submitted!");
   };
+  useEffect(() => {
+    const fetchTourData = async () => {
+      try {
+        const response1 = await fetch(`https://backend-production-9ac3.up.railway.app/api/tour/${id}/`);
+        const jsonData1 = await response1;
+        
+        const data1 = await jsonData1.json();
+
+        console.log(tourData);
+        setTourData(data1);
+        
+      } catch (error) {
+        console.log('Error fetching tour data:', error);
+      }
+    };
+
+    fetchTourData();
+  }, [id]);
 
   const handleGroupSizeChange = (e) => {
     const size = parseInt(e.target.value);
-    const pricePerPerson = 100; // Assuming the price per person is $100
+    const pricePerPerson = tourData.price; // Assuming the price per person is $100
     setGroupSize(size);
     setTotalPrice(size * pricePerPerson);
   };
+
+  
 
   const [selectedDate, setSelectedDate] = useState(null);
 

@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect } from 'react';
 import './header.css';
 import { NavLink } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+
 
 
 
@@ -9,7 +11,32 @@ function Header() {
   const [menuActive, setMenuActive] = useState(false);
   const [subMenuActive, setSubMenuActive] = useState(false);
   const [currentMenuTitle, setCurrentMenuTitle] = useState('');
+  const [isAuthenticated, setIsAuthenticated] = React.useState(false);
+  const navigate = useNavigate();
 
+  const handleLogout = () => {
+    
+    // Remove token from local storage
+    localStorage.removeItem('token');
+    navigate("/login"); 
+  
+    //call authenticated function
+    
+
+
+  
+  };
+
+  useEffect(() => {
+    // Check if token exists in local storage
+    const token = localStorage.getItem('token');
+    if (token) {
+      setIsAuthenticated(true);
+    } else {
+      setIsAuthenticated(false);
+    }
+  }, []);
+  
   const toggleMenu = () => {
     setMenuActive((prevState) => !prevState);
   };
@@ -81,23 +108,27 @@ function Header() {
                 </nav>
               </div>
 
+              {isAuthenticated ? (
               <div className="header-item item-right">
-                <a href="tel:6395673945">
-                  <button type="button" className="btn btn-square-navbar ml-2">
-                    <i className="fa fa-phone"></i> 6395673945
+                
+                  <button type="button" className="btn btn-square-navbar ml-2" onClick={handleLogout}>
+                    Logout
                   </button>
-                </a>
+                
 
                 <div className="mobile-menu-trigger">
+              
                   <span></span>
                 </div>
               </div>
+               ):(<div className="bookbutton pt-2"></div>) }
+
             </div>
           </div>
         </header>
       </section>
     </>
   );
-}
+};
 
 export default Header;

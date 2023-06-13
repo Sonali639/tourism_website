@@ -5,6 +5,8 @@ import Footer from "./Footer";
 import { useParams } from 'react-router-dom';
 import  { useEffect, useState } from 'react';
 import testi from "../Assets/ImagesTourList/04.png";
+import { Link } from 'react-router-dom';
+
 
 function TourDeatils() {
 
@@ -27,9 +29,13 @@ function TourDeatils() {
         //add this token to cookies as jwt
         document.cookie = `jwt=${token}`;
 
-        const response = await fetch(`https://backend-production-9ac3.up.railway.app/api/rating/${id}/`,{
+        const response = await fetch(`http://localhost:3000/api/rating/${id}/`,{
           method: 'GET',
           credentials: 'include',
+          headers : {
+            'Content-Type': 'application/json',
+
+          }
           
           
         });
@@ -60,7 +66,7 @@ function TourDeatils() {
         
         
         
-        const response = await fetch(`https://backend-production-9ac3.up.railway.app/api/rating/${id}/`, {
+        const response = await fetch(`http://localhost:3000/api/rating/${id}/`, {
           method: 'POST',
           credentials: 'include',
           headers: {
@@ -226,7 +232,9 @@ function TourDeatils() {
               {isAuthenticated ? (
                 <>
 <div className="bookbutton pt-2">
-  <button type="button" class="btn btn-outline-success btn-darkgreen py-2 px-5 ">Book Now</button>
+  <Link to={`/TourReservationForm/${tourData.id}`}>
+    <button type="button" class="btn btn-outline-success btn-darkgreen py-2 px-5 ">Book Now</button>
+  </Link>
 </div>
 </>
               ):(<div className="bookbutton pt-2"></div>) }

@@ -17,6 +17,7 @@ import Signup from'./Components/signup';
 import TourismStats from'./Components/TourismStats';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import TourReservationForm from './Components/TourReservationForm';
+import ChatBot from './Components/ChatBot';
 
 
 
@@ -43,7 +44,9 @@ function App() {
       <Route path='/Login' element={<Login/>}/>
       <Route path='/Signup' element={<Signup/>}/>
       <Route path='/TourismStats' element={<TourismStats/>}/>
-      <Route path='/TourReservationForm' element={<TourReservationForm/>}/>
+      <Route path='/TourReservationForm/:id' element={<TourReservationForm/>}/>
+      <Route path='/ChatBot' element={<ChatBot/>}/>
+      
       
     </Routes>
     </BrowserRouter>
