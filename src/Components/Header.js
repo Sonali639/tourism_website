@@ -27,6 +27,10 @@ function Header() {
   
   };
 
+  const handleLogin = () => {
+    navigate("/login");
+  };
+
   useEffect(() => {
     // Check if token exists in local storage
     const token = localStorage.getItem('token');
@@ -121,7 +125,20 @@ function Header() {
                   <span></span>
                 </div>
               </div>
-               ):(<div className="bookbutton pt-2"></div>) }
+               ):(
+                <div className="header-item item-right">
+                
+                  <button type="button" className="btn btn-square-navbar ml-2" onClick={handleLogin}>
+                    Login
+                  </button>
+                
+
+                <div className="mobile-menu-trigger">
+              
+                  <span></span>
+                </div>
+              </div>
+               ) }
 
             </div>
           </div>

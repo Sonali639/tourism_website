@@ -8,16 +8,25 @@ import testi from "../Assets/ImagesTourList/04.png";
 import { Link } from 'react-router-dom';
 
 
-function TourDeatils() {
 
+
+function TourDeatils() {
+  //create a state for weather data 
+  const [weatherData, setWeatherData] = useState(null);
   const { id } = useParams();
   const [tourData, setTourData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);
   const [rating, setRating] = useState(0); // Initial rating is 0
+  const [isSuitable , setIsSuitable] = useState(false);
+  const [commentInput, setCommentInput] = useState('');
+  const [comments, setComments] = useState([]);
+
+
 
   //get the rating from the /api/rating endpoint if exist 
+
   useEffect(() => {
     const fetchRating = async () => {
       try {
@@ -46,9 +55,94 @@ function TourDeatils() {
         console.log('Error fetching rating data:', error);
       }
     };
-
+    fetchComments();
     fetchRating();
   }, [id]);
+
+  const handleComment = async () => {
+    const token = localStorage.getItem("token");
+    if (token === undefined) {
+      localStorage.removeItem('jwt');
+      return;
+    }
+    //add this token to cookies as jwt
+    document.cookie = `jwt=${token}`;
+
+    const response = await fetch(`http://localhost:8000/api/comment/${id}/`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        comment: commentInput,
+      }),
+    });
+    const data = await response.json();
+    console.log(data);
+    setCommentInput('');
+  };
+
+  //
+
+
+  const handleCommentChange = (event) => {
+    setCommentInput(event.target.value);
+  };
+
+  const fetchComments = () => {
+    // Make a GET request to fetch comments from the API endpoint
+    fetch(`http://localhost:8000/api/comment/${id}/`)
+      .then(response => response.json())
+      .then(data => {
+        // Update the comments state with the fetched data
+        setComments(data);
+        console.log(comments);
+      })
+      .catch(error => {
+        // Handle any errors
+        console.error(error);
+      });
+  };
+
+  const fetchWeather = async (city) => {
+    //split the city from , and store the first part only in the city variable
+    city = city.split(",")[0];
+    
+    const response = await fetch(
+      `http://api.weatherapi.com/v1/forecast.json?key=671533af81664f63ad7192250231306&q=${city}&days=7&aqi=no&alerts=no`
+    );
+    const data = await response.json();
+    //create a array where we store the weather data as objects with text and icon
+    const forecast = data.forecast.forecastday.map((day) => {
+      return {
+        text: day.day.condition.text,
+        icon: day.day.condition.icon,
+      };
+    }
+    );
+    setWeatherData(forecast);
+    checkWeatherConditions(weatherData);
+
+  };
+
+
+
+  function getDayLabel(index) {
+    const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const today = new Date().getDay();
+    const dayIndex = (today + index) % 7;
+    return daysOfWeek[dayIndex];
+
+  }
+
+  //check if not tourData.location 
+  try{
+    fetchWeather(tourData.location);
+  }
+  catch (error) {
+    console.error('Error fetching weather data:', error);
+  }
 
   const  handleRatingClick = async (value) => {
     
@@ -82,8 +176,7 @@ function TourDeatils() {
 
         
     };  
-
-
+    
   //check if the user has a valid JWT token in local storage
   React.useEffect(() => {
     
@@ -118,12 +211,36 @@ function TourDeatils() {
         console.log('Error fetching tour data:', error);
       }
     };
-
     fetchTourData();
+    
+    
   }, [id]);
+        
+        function checkWeatherConditions(weatherData) {
+          let sunnyClearCount = 0;
+          
+          weatherData.forEach((day) => {
+            
+            if (day.text.toLowerCase() === "sunny" || day.text.toLowerCase() === "clear") {
+              sunnyClearCount++;
+            }
+          });
+        
+          if (sunnyClearCount >= 4 ) {
+            //set isSuitable to false
+            setIsSuitable(true);
+          }
+          
+        }
+        
   if (loading) {
     return <div>Loading...</div>;
   }
+  
+
+  
+
+  
    
 
   return (
@@ -203,7 +320,40 @@ function TourDeatils() {
                 </div>
 
                 <a href=""> <div className="text-right pb-3 text-green">Click here for Booking <i class="fa fa-angle-right"></i></div></a>
-
+                <div className="card mb-3">
+  <div className="card-body">
+    <h5 className="card-title">Weather Forecast</h5>
+    <div className="weather-forecast d-flex flex-row">
+      {weatherData &&
+        weatherData.map((day, index) => (
+          <div key={index} className="weather-day mr-3">
+            <div className="weather-label">{getDayLabel(index)}</div>
+            <img src={day.icon} alt={day.text} className="weather-icon" />
+            <div className="weather-text">{day.text}</div>
+            
+          </div>
+        ))}
+    </div>
+  </div>
+</div>
+          {isSuitable ? (
+            <div className="alert alert-success" role="alert">
+              <h4 className="alert-heading">Weather is suitable!</h4>
+              <p>
+                The weather is suitable for this tour. You can book this tour
+                with confidence.
+                </p>
+                </div>
+                ) : (
+                  <div className="alert alert-danger" role="alert">
+                    <h4 className="alert-heading">Weather is not suitable!</h4>
+                    <p>
+                      The weather is not suitable for this tour. You can still book
+                      this tour but we recommend you to check the weather forecast
+                      again before booking.
+                      </p>
+                      </div>
+                      )}
                 <div
                   className="detailDays"
                   style={{
@@ -211,7 +361,7 @@ function TourDeatils() {
                     backgroundImage:
                       "linear-gradient(url(https://wanderland.qodeinteractive.com/wp-content/uploads/2019/11/landing-img-42a.png)",
                   }}
-                >
+                >      
                   <div className="p-5">
                     <div
                       className="p-5 font-italic"
@@ -231,16 +381,71 @@ function TourDeatils() {
               </div>
               {isAuthenticated ? (
                 <>
-<div className="bookbutton pt-2">
-  <Link to={`/TourReservationForm/${tourData.id}`}>
-    <button type="button" class="btn btn-outline-success btn-darkgreen py-2 px-5 ">Book Now</button>
-  </Link>
-</div>
-</>
-              ):(<div className="bookbutton pt-2"></div>) }
+                    <div className="bookbutton pt-2">
+                      <Link to={`/TourReservationForm/${tourData.id}`}>
+                        <button type="button" class="btn btn-outline-success btn-darkgreen py-2 px-5 ">Book Now</button>
+                      </Link>
+                    </div>
+                </>
+              ):(
+
+                <>
+                  <div className="bookbutton pt-2">
+                    <Link to={`/signup`}>
+                      <button type="button" class="btn btn-outline-success btn-darkgreen py-2 px-5 ">Book Now</button>
+                    </Link>
+                  </div>
+                </>
+              ) }
+
+            {/* Comment Section */}
+            <br></br>
+            <br></br>
                 
 
+            <div>
+              
+                <h2>Comments</h2>
+                <div id="comments">
+                </div>
+                <form id="commentForm"   >
+                  <textarea id="commentInput" placeholder="Write a comment..." 
+                  onChange={handleCommentChange}
+                  value={commentInput}
+
+                  rows="3"></textarea>
+                  <button type="submit" onClick={handleComment}>Post Comment</button>
+                </form>
+              </div>
+
+
+
+                <br></br>
+
+                <div>
+                <h2>Comments</h2>
+                <hr></hr>
+                    <div id="comments">
+                      {comments.map(comment => (
+                        <div key={comment.user} className="comment">
+                          <p>{comment.comment}</p>
+                          <p className="comment-author">By {comment.user}</p>
+                        </div>
+                        
+                      ))}
+                </div>
+              
             </div>
+            
+            
+            {/* Comment section over */}
+            
+            </div>
+            
+            
+             
+             
+              
 
             <div className="col-md-4">
               <div>
@@ -298,6 +503,8 @@ function TourDeatils() {
                     <div className="border-bottom py-3">Other Tour</div>
                     <div className="other-tour-blocks">
                       {data.map((item) => (
+          <Link to={`/TourDetails/${item.id}`} key={item.id} className="card-link">
+
                       <div className="row py-3 border-bottom">
                         <div className="col-md-5">
                           <a href="">
@@ -305,6 +512,7 @@ function TourDeatils() {
                               src={item.image2}
                               alt=""
                               width="100%"
+                              height="85rem"
                             />
                           </a>
                         </div>
@@ -318,6 +526,7 @@ function TourDeatils() {
                           </a>
                         </div>
                       </div>
+                      </Link>
                       ))}
 
 
@@ -383,6 +592,7 @@ function TourDeatils() {
 </div>
 
 
+
                 </div>
               </div>
             </div>
@@ -390,9 +600,11 @@ function TourDeatils() {
         </div>
 
       </section>
+      
       <Footer/>
     </>
   );
+  
 }
 
 export default TourDeatils;
