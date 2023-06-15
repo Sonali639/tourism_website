@@ -1,11 +1,7 @@
-import React, { useState ,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './header.css';
 import { NavLink } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
-
-
-
-
 
 function Header() {
   const [menuActive, setMenuActive] = useState(false);
@@ -15,16 +11,10 @@ function Header() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    
     // Remove token from local storage
     localStorage.removeItem('token');
-    navigate("/login"); 
-  
-    //call authenticated function
-    
-
-
-  
+    navigate("/login");
+    // call authenticated function
   };
 
   const handleLogin = () => {
@@ -40,15 +30,28 @@ function Header() {
       setIsAuthenticated(false);
     }
   }, []);
-  
+
   const toggleMenu = () => {
     setMenuActive((prevState) => !prevState);
   };
 
-  const showSubMenu = (hasChildren) => {
-    setSubMenuActive(true);
+  const handleMobileMenuTrigger = () => {
+    toggleMenu();
+  };
 
-    const menuTitle = hasChildren.querySelector('i').parentNode.childNodes[0].textContent;
+  useEffect(() => {
+    const mobileMenuTrigger = document.querySelector(".mobile-menu-trigger");
+    mobileMenuTrigger.addEventListener("click", handleMobileMenuTrigger);
+
+    return () => {
+      // Clean up the event listener when the component unmounts
+      mobileMenuTrigger.removeEventListener("click", handleMobileMenuTrigger);
+    };
+  }, []);
+
+  const showSubMenu = (menuItem) => {
+    setSubMenuActive(true);
+    const menuTitle = menuItem.firstChild.textContent;
     setCurrentMenuTitle(menuTitle);
   };
 
@@ -57,11 +60,9 @@ function Header() {
     setCurrentMenuTitle('');
   };
 
-
-
   return (
     <>
-      <section className={`header bg-blck text-white ${menuActive ? 'active' : ''}`}>
+      <section className={`header bg-blck text-black ${menuActive ? 'active' : ''}`}>
         <header className="header" style={{ borderBottom: '0.5px solid #edebeb' }}>
           <div className="container-fluid">
             <div className="row v-center">
@@ -78,7 +79,7 @@ function Header() {
                     <div className="go-back" onClick={hideSubMenu}>
                       <i className="fa fa-angle-left"></i>
                     </div>
-                    <div className="current-menu-title"></div>
+                    <div className="current-menu-title">{currentMenuTitle}</div>
                     <div className="mobile-menu-close" onClick={toggleMenu}>&times;</div>
                   </div>
                   <ul className="menu-main">
@@ -90,7 +91,9 @@ function Header() {
                     </li>
 
                     <li className="menu-item-has-children">
-                      <a href="#">Travel <i className="fa fa-angle-down"></i></a>
+                      <a href="#" onClick={() => showSubMenu(this)}>
+                        Travel <i className="fa fa-angle-down"></i>
+                      </a>
                       <div className={`sub-menu single-column-menu ${subMenuActive ? 'active' : ''}`}>
                         <ul>
                           <li><NavLink className="nav-link" to="/TourList">Tour List</NavLink></li>
@@ -113,32 +116,28 @@ function Header() {
               </div>
 
               {isAuthenticated ? (
-              <div className="header-item item-right">
-                
+                <div className="header-item item-right">
+
                   <button type="button" className="btn btn-square-navbar ml-2" onClick={handleLogout}>
                     Logout
                   </button>
-                
 
-                <div className="mobile-menu-trigger">
-              
-                  <span></span>
+                  <div className="mobile-menu-trigger">
+                    <span></span>
+                  </div>
                 </div>
-              </div>
-               ):(
-                <div className="header-item item-right">
-                
-                  <button type="button" className="btn btn-square-navbar ml-2" onClick={handleLogin}>
-                    Login
+              ) : (
+                  <div className="header-item item-right">
+
+                    <button type="button" className="btn btn-square-navbar ml-2" onClick={handleLogin}>
+                      Login
                   </button>
-                
 
-                <div className="mobile-menu-trigger">
-              
-                  <span></span>
-                </div>
-              </div>
-               ) }
+                    <div className="mobile-menu-trigger">
+                      <span></span>
+                    </div>
+                  </div>
+                )}
 
             </div>
           </div>

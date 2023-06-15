@@ -38,11 +38,12 @@ function TourDeatils() {
         //add this token to cookies as jwt
         document.cookie = `jwt=${token}`;
 
-        const response = await fetch(`http://localhost:3000/api/rating/${id}/`,{
+        const response = await fetch(`https://backend-production-9ac3.up.railway.app/api/rating/${id}/`,{
           method: 'GET',
           credentials: 'include',
           headers : {
             'Content-Type': 'application/json',
+            'authorization': 'Token ' + token,
 
           }
           
@@ -59,6 +60,9 @@ function TourDeatils() {
     fetchRating();
   }, [id]);
 
+ 
+    
+
   const handleComment = async () => {
     const token = localStorage.getItem("token");
     if (token === undefined) {
@@ -68,11 +72,12 @@ function TourDeatils() {
     //add this token to cookies as jwt
     document.cookie = `jwt=${token}`;
 
-    const response = await fetch(`http://localhost:8000/api/comment/${id}/`, {
+    const response = await fetch(`https://backend-production-9ac3.up.railway.app/api/comment/${id}/`, {
       method: 'POST',
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
+        'authorization': 'Token ' + token,
       },
       body: JSON.stringify({
         comment: commentInput,
@@ -92,7 +97,7 @@ function TourDeatils() {
 
   const fetchComments = () => {
     // Make a GET request to fetch comments from the API endpoint
-    fetch(`http://localhost:8000/api/comment/${id}/`)
+    fetch(`https://backend-production-9ac3.up.railway.app/api/comment/${id}/`)
       .then(response => response.json())
       .then(data => {
         // Update the comments state with the fetched data
@@ -160,19 +165,20 @@ function TourDeatils() {
         
         
         
-        const response = await fetch(`http://localhost:3000/api/rating/${id}/`, {
+        const response = await fetch(`https://backend-production-9ac3.up.railway.app/api/rating/${id}/`, {
           method: 'POST',
           credentials: 'include',
           headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': 'https://backend-production-9ac3.up.railway.app/',
-            "Access-Control-Allow-Credentials" : true
+            // pass jwt token in the headerb
+            'authorization': 'Token ' + token,
+            
             
           },
           body: JSON.stringify({ rating: value }),
         });
         const data = await response.json();
-        console.log(data);
+        console.log("POST DATA "+data);
 
         
     };  

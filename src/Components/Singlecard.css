@@ -55,3 +55,23 @@ img.cover{
     width: 93%;
     height: 93%;
 }
+
+
+.card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .card-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .card-image img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+  }

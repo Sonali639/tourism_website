@@ -226,7 +226,7 @@ a{
 	.header .menu{
 		position: fixed;
 		width: 320px;
-		background-color:#ffffff;
+		background-color:grey;
 		left:0;
 		top:0;
 		height: 100%;
@@ -234,6 +234,9 @@ a{
 		transform: translate(-100%);
 		transition: all 0.5s ease;
 		z-index: 1099;
+	}
+	NavLink{
+		color: black;
 	}
 	.header .menu.active{
 	   transform: translate(0%);	
@@ -384,6 +387,7 @@ a{
 	  visibility: visible;
 	  opacity:1;	
 	}
+	
 }
 
 

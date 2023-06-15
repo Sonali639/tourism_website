@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import './loading.css';
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+
 
 const TourReservationForm = () => {
   const { id } = useParams();
@@ -14,6 +16,7 @@ const TourReservationForm = () => {
   const [tourData, setTourData] = useState(null);
   const [tourDate , setTourDate] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false); // Track whether the form is being submitted
+  
 
   const navigate = useNavigate();
 
@@ -98,11 +101,12 @@ const TourReservationForm = () => {
     // Send the data to the Booking/<int:pk>/ endpoint
     // You can make an API request using a library like Axios or fetch to send the data to the server
     // Example using fetch:
-    fetch(`http://localhost:8000/api/Booking/${id}/`, {
+    fetch(`https://backend-production-9ac3.up.railway.app/api/Booking/${id}/`, {
       method: 'POST',
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
+        'authorization': 'Token ' + token,
       },
       body: JSON.stringify(bookingData),
     })
@@ -111,6 +115,7 @@ const TourReservationForm = () => {
         console.log('Booking response:', data);
         // Handle the booking response as needed
         // Redirect the user to a success page or display a confirmation message
+        alert("Payment Completed ! You have successfully booked the tour. Enjoy the Journey!")
         navigate("/home");
         
       })
@@ -191,47 +196,40 @@ const TourReservationForm = () => {
 {/*---paymet--*/}
 <div className="payment pt-5">
 <div className="title-payment" style={{fontWeight:'600', fontSize:'20px'}}>
-  Payment Deatils
-  <div class="row pt-3">
-          <div class="col-md-6 col-sm-12">
-            <input
-                type="text"
-                className="form-control border-input py-3 px-3"
-                placeholder="Name on Card"
-              />
-            </div>
-          </div>
-          <div class="row pt-3">
-          <div class="col-md-6 col-sm-12">
-            <input
-                type="N]number"
-                className="form-control border-input py-3 px-3"
-                placeholder="Enter Card number"
-              />
-            </div>
-          </div>
-          <div class="row pt-3">
-          <div class="col-md-3 col-sm-6">
-            <input
-                type="N]number"
-                className="form-control border-input py-3 px-3"
-                placeholder="Valid through"
-              />
-            </div>
-            <div class="col-md-3 col-sm-6">
-            <input
-                type="N]number"
-                className="form-control border-input py-3 px-3"
-                placeholder="CVV"
-              />
-            </div>
+  Pay Now
+  <br></br>
+  
           
-          </div>
-</div>
-</div>
+        
+{/* 
+          <PayPalScriptProvider
+        options={{ "client-id": "AQhQixAYw4WhRYxzxNjVP19mqY0udQd9sQqRiiILXkeGs7PFr3_FEPuQtuv7srG4fxjfuXsoYSIIBVCU" }}
+      >
+        <PayPalButtons
+          createOrder={(data, actions) => {
+            return actions.order.create({
+              purchase_units: [
+                {
+                  amount: {
+                    value: {totalPrice},
+                  },
+                },
+              ],
+            });
+          }}
+          onApprove={handleSubmit}
+        />
+      </PayPalScriptProvider>
+    </div>
+</div> */}
+
+<PayPalScriptProvider options={{ clientId: "AQhQixAYw4WhRYxzxNjVP19mqY0udQd9sQqRiiILXkeGs7PFr3_FEPuQtuv7srG4fxjfuXsoYSIIBVCU" }}>
+            <PayPalButtons style={{ layout: "horizontal" }} />
+  </PayPalScriptProvider>
 
 
-          <div className="pt-4 col-md-3 pl-0">
+
+          {/* <div className="pt-4 col-md-3 pl-0">
           <button
               type="submit"
               className={`btn font-10px text-white btn-dark px-5 btn-block border-input py-3 ${isSubmitting ? 'is-submitting' : ''}`}
@@ -243,8 +241,9 @@ const TourReservationForm = () => {
                 'Pay Now'
               )}
             </button>
+        </div> */}
         </div>
-
+        </div>
         </form>
       </div>
     </div>
