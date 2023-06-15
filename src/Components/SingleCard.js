@@ -40,8 +40,8 @@ function SingleCardDetail() {
         </span>
         <div className="square-container d-flex align-items-end justify-content-end">
           <div className="box-title icon-white">
-            <h4 className="font-weight-bold text-white border-bottom"> <i className="fa fa-map-marker icon-white"></i> Rome</h4>
-            <h6 className="text-white">{item.price}/ per person</h6>
+            <h4 className="font-weight-bold text-white border-bottom"> <i className="fa fa-map-marker icon-white"></i> {item.location}</h4>
+            <h6 className="text-white">{item.price} / per person</h6>
           </div>
         </div>
       </div>

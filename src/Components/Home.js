@@ -61,7 +61,8 @@ function Home() {
             <div className="py-5 px-5">
               <div className="container-fluid py-5">
                 <div className="pt-md-5">
-                  <div className="font-50px text-white">Home title 2</div>
+                <div className=" text-white mainHeading2"><span>Embrace the allure </span>  of wanderlust</div>
+
                   <div className="travel-list-btn pt-4">
                  <a href="./tourList"><button
                     type="button"
@@ -78,7 +79,7 @@ function Home() {
             <div className="py-5 px-5">
               <div className="container-fluid py-5">
               <div className="pt-md-5">
-                  <div className="font-50px text-white">Home title 3</div>
+              <div className=" text-white mainHeading2"><span>Embrace the allure </span>  of wanderlust</div>
                   <div className="travel-list-btn pt-4">
                  <a href="./tourList"><button
                     type="button"
@@ -95,7 +96,7 @@ function Home() {
             <div className="py-5 px-5">
               <div className="container-fluid py-5">
               <div className="pt-md-5">
-                  <div className="font-50px text-white">Home title 4</div>
+              <div className=" text-white mainHeading2"><span>Embrace the allure </span>  of wanderlust</div>
                   <div className="travel-list-btn pt-4">
                  <a href="./tourList"><button
                     type="button"
@@ -168,7 +169,7 @@ function Home() {
                     alt="d"
                     loading="lazy"
                   />
-                  Lorem ipsum dolor sit amet consectetur
+                  Discover the world's tapestry of wonders and unlock the extraordinary in every journey
                 </div>
 
                 <div className="pt-4">
@@ -180,7 +181,7 @@ function Home() {
                     alt="d"
                     loading="lazy"
                   />
-                  Lorem ipsum dolor sit amet consectetur
+                  
                 </div>
 
                 <div className="pt-4">
@@ -567,7 +568,7 @@ function Home() {
           </video>
           <div className="text-overlay">
             <h1 className="overlay-text " id="typewriter">
-              Lorem ipsum dolor sit.
+            Explore. Unwind. Inspire
             </h1>
           </div>
           <div className="gradient-overlay"></div>
