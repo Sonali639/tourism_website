@@ -68,7 +68,7 @@ function Header() {
             <div className="row v-center">
               <div className="header-item item-left">
                 <div className="logo">
-                  <a href="#">logo</a>
+                  <a href="#">WanderWay</a>
                 </div>
               </div>
 

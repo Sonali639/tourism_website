@@ -290,7 +290,7 @@ function TourDeatils() {
               <div>
               {isAuthenticated ? (
                 <>
-                <div className="tour-title  font-30px">Lorem, ipsum dolor.</div>
+                <div className="tour-title  font-30px">{tourData.title}</div>
                 <div className="font-18px row pb-1 pt-2"> <span className="col"> < i class="fa fa-plane"></i>  Travel | Lifestyle | Explore</span> 
                 <span className="col text-right">
                       {[1, 2, 3, 4, 5].map((value) => (
@@ -304,7 +304,7 @@ function TourDeatils() {
                 </div> 
 </>
 
-              ):(<div className="tour-title  font-30px">Lorem, ipsum dolor.</div>)}
+              ):(<div className="tour-title  font-30px"></div>)}
                 <div className="row">
                   <div className="col-6">
                     <img
