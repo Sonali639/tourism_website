@@ -89,6 +89,9 @@ function Header() {
                     <li>
                       <NavLink className="nav-link" to="/About-us">about</NavLink>
                     </li>
+                    <li>
+                      <NavLink className="nav-link" to="/ChatBot">ChatBot</NavLink>
+                    </li>
 
                     <li className="menu-item-has-children">
                       <a href="#" onClick={() => showSubMenu(this)}>

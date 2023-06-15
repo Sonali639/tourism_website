@@ -189,7 +189,7 @@ const TourReservationForm = () => {
    
 <div className="d-flex float-right">
           <div class=" py-2 text-right mt-3  px-5 " style={{backgroundColor:'rgb(255,255,255)', border:'1px solid rgb(20,55,35)'}}>
-              <div>Total price : ${totalPrice}</div>
+              <div>Total price : RS {totalPrice}</div>
             </div>
             </div>
 

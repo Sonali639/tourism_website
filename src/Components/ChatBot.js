@@ -1,3 +1,5 @@
+import Header from "./Header";
+import Footer from "./Footer";
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './ChatInterface.css';
@@ -51,7 +53,10 @@ const ChatInterface = () => {
   };
 
   return (
-    <div className="chat-interface">
+    <>
+    
+   
+    <div className="chat-interface" style={{'background-color':"#C2E5CB"}}>
       <div className="chat-interface-messages">
         {messages.map((message, index) => (
           <div key={index} className={`message message-${message.sender}`}>
@@ -71,6 +76,7 @@ const ChatInterface = () => {
       </div>
       {isLoading && <div className="loading-animation"></div>}
     </div>
+    </>
   );
 };
 
